@@ -39,8 +39,8 @@ def calculate_level(wilks_coefficient):
     else:
         return "Elite (10)"
 
-weight_lifted = 50
-body_weight = 25
+weight_lifted = int(input("Weight Lifted in Kg > "))
+body_weight = int(input("Body Weight in Kg > "))
 is_male = True
 
 w = weight_lifted
@@ -58,3 +58,4 @@ print("lift to body weight percentage",  x * 100, '%')
 print("Lift x Body Weight", x)
 print("Wilks Coefficient:", wilks_coefficient)
 print("Level:", level)
+
