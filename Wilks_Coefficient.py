@@ -39,23 +39,38 @@ def calculate_level(wilks_coefficient):
     else:
         return "Elite (10)"
 
+def is_male_check(im):
+    if im == 'y':
+        is_male = True
+    elif im == 'n':
+        is_male = False
+    else:
+        while im != 'y' and im != 'n':
+            im = input("is male [y] or not [n] > ")
+        if im == 'y':
+            is_male = True
+        elif im == 'n':
+            is_male = False
+    return is_male
+
 weight_lifted = int(input("Weight Lifted in Kg > "))
 body_weight = int(input("Body Weight in Kg > "))
-is_male = True
+im = input("is male [y] or not [n] > ")
+is_male = is_male_check(im)
 
 w = weight_lifted
 bw = body_weight
 x = 0
 while bw * x < w:
     x = x + 0.00001
-    
+
 wilks_coefficient = calculate_wilks_coefficient(weight_lifted, body_weight, is_male)
 level = calculate_level(wilks_coefficient)
 
-print("Weight lifted:", weight_lifted, "kg")
+print("\nWeight lifted:", weight_lifted, "kg")
 print("Body weight:", body_weight, "kg")
-print("lift to body weight percentage",  x * 100, '%')        
-print("Lift x Body Weight", x)
+print("is male = ", is_male)
+print("Lift to body weight percentage: {:.2f}%".format(x * 100))        
+print("Lift x Body Weight:", x)
 print("Wilks Coefficient:", wilks_coefficient)
 print("Level:", level)
-
